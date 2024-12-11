@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from .author import author_router
+from .book import book_router
 from .health_check import router
 
 
@@ -15,6 +16,11 @@ def init_routes(app: FastAPI) -> None:
         router=author_router,
         prefix=f'{prefix}/authors',
         tags=['Authors'],
+    )
+    app.include_router(
+        router=book_router,
+        prefix=f'{prefix}/books',
+        tags=['Books'],
     )
 
 

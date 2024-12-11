@@ -12,7 +12,7 @@ from fastapi import FastAPI
 from src.api import init_routes
 from src.api.middlewares import init_middlewares
 from src.providers.adapters import ConfigProvider, SqlalchemyProvider, RepositoryProvider
-from src.providers.interactor_providers import AuthorInteractorProvider
+from src.providers.interactor_providers import AuthorInteractorProvider, BookInteractorProvider
 from src.utils import log
 
 logger = structlog.stdlib.get_logger()
@@ -31,6 +31,7 @@ def container_factory() -> AsyncContainer:
         ConfigProvider(),
         RepositoryProvider(),
         AuthorInteractorProvider(),
+        BookInteractorProvider(),
     )
 
 
