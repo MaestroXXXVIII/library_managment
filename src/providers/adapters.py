@@ -11,6 +11,8 @@ from sqlalchemy.ext.asyncio import (
 )
 
 from src.config import Config, DbConfig
+from src.features.author.domain.abstract_repository import IAuthorRepository
+from src.infrastructure.repositories.author_repository import AuthorRepository
 
 
 class SqlalchemyProvider(Provider):
@@ -41,7 +43,12 @@ class ConfigProvider(Provider):
     def provide_config(self) -> Config:
         env = Env()
         env.read_env()
-
         return Config(
             db=DbConfig.from_env(env),
         )
+
+
+class RepositoryProvider(Provider):
+    scope = Scope.REQUEST
+
+    author_provider = provide(AuthorRepository, provides=IAuthorRepository)
