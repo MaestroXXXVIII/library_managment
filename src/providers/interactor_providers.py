@@ -12,7 +12,13 @@ from src.features.book.application.interactors import (
     GetBookByIdInteractor,
     GetBooksInteractor,
     UpdateBookInteractor,
-    DeleteBookInteractor
+    DeleteBookInteractor, ReduceCountAvailableInteractor, IncreaseCountAvailableInteractor
+)
+from src.features.borrow.application.interactors import (
+    CreateBorrowInteractor,
+    GetBorrowsInteractor,
+    GetBorrowByIdInteractor,
+    ReturnBookInteractor,
 )
 
 
@@ -34,3 +40,14 @@ class BookInteractorProvider(Provider):
     get_books = provide(GetBooksInteractor)
     update_book = provide(UpdateBookInteractor)
     delete_book = provide(DeleteBookInteractor)
+    reduce_count_available = provide(ReduceCountAvailableInteractor)
+    increase_count_available = provide(IncreaseCountAvailableInteractor)
+
+
+class BorrowInteractorProvider(Provider):
+    scope = Scope.REQUEST
+
+    create_borrow = provide(CreateBorrowInteractor)
+    get_borrows = provide(GetBorrowsInteractor)
+    get_borrow_by_id = provide(GetBorrowByIdInteractor)
+    return_book = provide(ReturnBookInteractor)

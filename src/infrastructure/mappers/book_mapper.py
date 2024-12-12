@@ -1,4 +1,3 @@
-from dataclasses import asdict
 from datetime import datetime
 from src.features.book.domain.entity import BookEntity
 from src.features.book.domain.value_objects import CountAvailable
@@ -34,5 +33,5 @@ class BookMapper:
             'title': entity.title,
             'description': entity.description,
             'author_id': entity.author_id,
-            'count_available': entity.count_available
+            'count_available': entity.count_available.value
         }

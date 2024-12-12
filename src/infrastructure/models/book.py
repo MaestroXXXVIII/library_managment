@@ -8,6 +8,7 @@ from .mixins import IntIdPkMixin
 
 if TYPE_CHECKING:
     from .author import AuthorModel
+    from .borrow import BorrowModel
 
 
 class BookModel(Base, IntIdPkMixin):
@@ -19,3 +20,4 @@ class BookModel(Base, IntIdPkMixin):
     count_available: Mapped[int] = mapped_column(nullable=False)
 
     author: Mapped['AuthorModel'] = relationship('AuthorModel', back_populates='books')
+    borrows: Mapped['BorrowModel'] = relationship('BorrowModel', back_populates='book')

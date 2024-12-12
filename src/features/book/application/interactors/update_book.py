@@ -22,7 +22,7 @@ class UpdateBookInteractor:
         book_entity = await self._repository.get_by_id(
             book_id=book_id
         )
-        return book_entity
+        return book_entity[0]
 
     @staticmethod
     def _map_to_updated_data(book: BookEntity, updated_data: BookUpdateDTO) -> BookEntity:

@@ -45,3 +45,12 @@ class IBookRepository(ABC):
         :param book_id: Book id for the delete
         :return: None because Book was deleted
         """
+
+    @abstractmethod
+    async def change_count_available(self, book_id: int, count: int) -> None:
+        """
+        Change Book count to available books
+        :param book_id: Book id for the change
+        :param count: reduce or increase book count
+        :return: None
+        """

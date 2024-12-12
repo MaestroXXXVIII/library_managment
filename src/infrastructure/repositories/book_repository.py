@@ -39,11 +39,14 @@ class BookRepository(IBookRepository):
 
     async def update(self, book: BookEntity) -> BookEntity | None:
         updated_data = BookMapper.entity_to_dict(book)
-        print(updated_data)
         stmt = update(BookModel).filter_by(id=book.book_id).values(**updated_data)
         await self._session.execute(stmt)
         return book
 
     async def delete(self, book_id: int) -> None:
         stmt = delete(BookModel).filter_by(id=book_id)
+        await self._session.execute(stmt)
+
+    async def change_count_available(self, book_id: int, count: int) -> None:
+        stmt = update(BookModel).filter_by(id=book_id).values(count_available=count)
         await self._session.execute(stmt)
