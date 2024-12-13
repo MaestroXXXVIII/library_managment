@@ -2,22 +2,24 @@ from dishka import Provider, Scope, provide
 
 from src.features.author.application.interactors import (
     CreateAuthorInteractor,
+    DeleteAuthorInteractor,
     GetAuthorByIdInteractor,
     GetAuthorsInteractor,
     UpdateAuthorInteractor,
-    DeleteAuthorInteractor,
 )
 from src.features.book.application.interactors import (
     CreateBookInteractor,
+    DeleteBookInteractor,
     GetBookByIdInteractor,
     GetBooksInteractor,
+    IncreaseCountAvailableInteractor,
+    ReduceCountAvailableInteractor,
     UpdateBookInteractor,
-    DeleteBookInteractor, ReduceCountAvailableInteractor, IncreaseCountAvailableInteractor
 )
 from src.features.borrow.application.interactors import (
     CreateBorrowInteractor,
-    GetBorrowsInteractor,
     GetBorrowByIdInteractor,
+    GetBorrowsInteractor,
     ReturnBookInteractor,
 )
 

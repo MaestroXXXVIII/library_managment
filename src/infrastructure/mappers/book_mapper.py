@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from src.features.book.domain.entity import BookEntity
 from src.features.book.domain.value_objects import CountAvailable
 from src.infrastructure.models import BookModel
@@ -28,10 +29,10 @@ class BookMapper:
         )
 
     @staticmethod
-    def entity_to_dict(entity: BookEntity) -> dict[str, str | datetime]:
+    def entity_to_dict(entity: BookEntity) -> dict[str, str | int | datetime]:
         return {
             'title': entity.title,
             'description': entity.description,
             'author_id': entity.author_id,
-            'count_available': entity.count_available.value
+            'count_available': entity.count_available.value,
         }

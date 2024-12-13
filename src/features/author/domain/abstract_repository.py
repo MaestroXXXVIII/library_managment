@@ -7,6 +7,7 @@ class IAuthorRepository(ABC):
     """
     Interface repository for entity Author
     """
+
     @abstractmethod
     async def save(self, entity: AuthorEntity) -> None:
         """

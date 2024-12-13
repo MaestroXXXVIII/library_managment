@@ -28,7 +28,7 @@ class BookMapper:
     @staticmethod
     def update_data(entity: BookEntity, updated_data: BookUpdateDTO) -> BookEntity:
         for field, value in asdict(updated_data).items():
-            if value is not None and field != "count_available":
+            if value is not None and field != 'count_available':
                 setattr(entity, field, value)
         entity.count_available = CountAvailable(updated_data.count_available)
 
