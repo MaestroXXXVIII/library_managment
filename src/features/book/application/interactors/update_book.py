@@ -19,9 +19,7 @@ class UpdateBookInteractor:
             raise
 
     async def _get_existing_book(self, book_id: int) -> BookEntity:
-        book_entity = await self._repository.get_by_id(
-            book_id=book_id
-        )
+        book_entity = await self._repository.get_by_id(book_id=book_id)
         return book_entity[0]
 
     @staticmethod

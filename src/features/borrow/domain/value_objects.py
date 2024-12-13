@@ -6,10 +6,9 @@ from datetime import date
 class Date:
     value: date
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if not isinstance(self.value, date):
-            raise TypeError(f'Неверный тип данных: {type(self.value)}.'
-                            f'Ожидается date.')
+            raise TypeError(f'Неверный тип данных: {type(self.value)}.' f'Ожидается date.')
 
 
 @dataclass(frozen=True)

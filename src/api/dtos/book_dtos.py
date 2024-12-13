@@ -7,6 +7,7 @@ class CreateBookDTO(BaseModel):
     author_id: int
     count_available: int
 
+
 class ResponseBookDTO(BaseModel):
     book_id: int
     title: str

@@ -19,9 +19,7 @@ class UpdateAuthorInteractor:
             raise
 
     async def _get_existing_author(self, author_id: int) -> AuthorEntity:
-        author_entity = await self._repository.get_by_id(
-            author_id=author_id
-        )
+        author_entity = await self._repository.get_by_id(author_id=author_id)
         return author_entity
 
     @staticmethod

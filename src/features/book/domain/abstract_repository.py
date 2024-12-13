@@ -7,6 +7,7 @@ class IBookRepository(ABC):
     """
     Interface repository for entity Book
     """
+
     @abstractmethod
     async def save(self, entity: BookEntity) -> None:
         """

@@ -7,7 +7,7 @@ class ReduceCountAvailableInteractor:
     def __init__(self, book_repository: IBookRepository):
         self._repository = book_repository
 
-    async def execute(self, book_id: int):
+    async def execute(self, book_id: int) -> None:
         book = await self._get_book(book_id)
 
         try:
@@ -17,11 +17,8 @@ class ReduceCountAvailableInteractor:
 
         await self._repository.change_count_available(book_id, book.count_available.value)
 
-
     async def _get_book(self, book_id: int) -> BookEntity:
-        book_entity = await self._repository.get_by_id(
-            book_id=book_id
-        )
+        book_entity = await self._repository.get_by_id(book_id=book_id)
         if book_entity is None:
             raise BookNotFoundError
 

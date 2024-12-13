@@ -1,13 +1,23 @@
-from src.features.book.application.interactors.reduce_count_available_book import ReduceCountAvailableInteractor
+from src.features.book.application.interactors.reduce_count_available_book import (
+    ReduceCountAvailableInteractor,
+)
 from src.features.book.exceptions import AvailableCountBookError, BookNotFoundError
 from src.features.borrow.application.dtos import BorrowCreateDTO
 from src.features.borrow.application.mapper import BorrowMapper
 from src.features.borrow.domain.abstract_repository import IBorrowRepository
-from src.features.borrow.exceptions import BorrowAlreadyExistsError, CreateBorrowError, NotFoundBookForCreateBorrowed
+from src.features.borrow.exceptions import (
+    BorrowAlreadyExistsError,
+    CreateBorrowError,
+    NotFoundBookForCreateBorrowed,
+)
 
 
 class CreateBorrowInteractor:
-    def __init__(self, borrow_repository: IBorrowRepository, reduce_count_available_interactor: ReduceCountAvailableInteractor):
+    def __init__(
+        self,
+        borrow_repository: IBorrowRepository,
+        reduce_count_available_interactor: ReduceCountAvailableInteractor,
+    ):
         self._repository = borrow_repository
         self._reduce_interactor = reduce_count_available_interactor
 

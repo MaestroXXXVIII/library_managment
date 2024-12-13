@@ -8,6 +8,7 @@ class IBorrowRepository(ABC):
     """
     Interface repository for entity Borrow
     """
+
     @abstractmethod
     async def save(self, entity: BorrowEntity) -> None:
         """
