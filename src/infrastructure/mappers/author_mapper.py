@@ -1,5 +1,5 @@
-from dataclasses import asdict
-from datetime import datetime
+from datetime import date
+
 from src.features.author.domain.entity import AuthorEntity
 from src.features.author.domain.value_objects import DateOfBirth
 from src.infrastructure.models import AuthorModel
@@ -20,11 +20,11 @@ class AuthorMapper:
             _author_id=model.id,
             first_name=model.first_name,
             last_name=model.last_name,
-            date_of_birth=DateOfBirth(model.date_of_birth),
+            date_of_birth=DateOfBirth(model.date_of_birth),  # type: ignore
         )
 
     @staticmethod
-    def entity_to_dict(entity: AuthorEntity) -> dict[str, str | datetime]:
+    def entity_to_dict(entity: AuthorEntity) -> dict[str, str | date]:
         return {
             'first_name': entity.first_name,
             'last_name': entity.last_name,

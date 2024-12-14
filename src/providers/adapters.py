@@ -12,7 +12,13 @@ from sqlalchemy.ext.asyncio import (
 
 from src.config import Config, DbConfig
 from src.features.author.domain.abstract_repository import IAuthorRepository
-from src.infrastructure.repositories.author_repository import AuthorRepository
+from src.features.book.domain.abstract_repository import IBookRepository
+from src.features.borrow.domain.abstract_repository import IBorrowRepository
+from src.infrastructure.repositories import (
+    AuthorRepository,
+    BookRepository,
+    BorrowRepository,
+)
 
 
 class SqlalchemyProvider(Provider):
@@ -52,3 +58,5 @@ class RepositoryProvider(Provider):
     scope = Scope.REQUEST
 
     author_provider = provide(AuthorRepository, provides=IAuthorRepository)
+    book_provider = provide(BookRepository, provides=IBookRepository)
+    borrow_provider = provide(BorrowRepository, provides=IBorrowRepository)

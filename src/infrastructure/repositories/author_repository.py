@@ -1,11 +1,11 @@
 from logging import warning
 
-from sqlalchemy import select, update, delete
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import delete, select, update
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.features.author.domain.entity import AuthorEntity
 from src.features.author.domain.abstract_repository import IAuthorRepository
+from src.features.author.domain.entity import AuthorEntity
 from src.features.author.exceptions import AuthorAlreadyExistsError
 from src.infrastructure.mappers.author_mapper import AuthorMapper
 from src.infrastructure.models import AuthorModel
@@ -23,7 +23,6 @@ class AuthorRepository(IAuthorRepository):
         except IntegrityError as error:
             warning(error)
             raise AuthorAlreadyExistsError()
-
 
     async def get_by_id(self, author_id: int) -> AuthorEntity | None:
         query = select(AuthorModel).filter_by(id=author_id)
